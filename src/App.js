@@ -1,3 +1,5 @@
+import { ConfigProvider } from "antd";
+import esES from "antd/lib/locale/es_ES";
 import './App.css';
 import { GlobalContext } from './components/context/GlobalContext';
 import TablaEncuestaHacienda from './components/ui/TablaEncuestaHacienda';
@@ -14,7 +16,16 @@ function App() {
 
   return (
     <GlobalContext.Provider value={{ drawerNuevaEnc, setDrawerNuevaEnc, drawerEditarEnc, setDrawerEditarEnc, actualizarTableData, setActualizarTableData }}>
-      <TablaEncuestaHacienda />
+      <ConfigProvider
+        locale={esES}
+        theme={{
+          token: {
+            colorPrimary: "#56b43c",
+          },
+        }}
+      >
+        <TablaEncuestaHacienda />
+      </ConfigProvider>
     </GlobalContext.Provider>
   );
 }

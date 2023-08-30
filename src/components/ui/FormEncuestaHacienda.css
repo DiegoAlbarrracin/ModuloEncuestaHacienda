@@ -25,11 +25,6 @@
     font-weight: 500; 
     margin-top: 10px;
     border-radius: 0;
-    background-color: #56b43c;
-}
-
-.btn-guardar:hover {
-    background-color: #78c25f !important;
 }
 
 :where(.css-dev-only-do-not-override-byeoj0).ant-input-affix-wrapper >input.ant-input {

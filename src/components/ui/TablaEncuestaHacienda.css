@@ -90,32 +90,15 @@
 .btn-flat {
   border-radius: 0px;
   font-weight: 500;
-  background-color: #56b43c;
-}
-
-.btn-flat:hover {
-  background-color: #78c25f !important;
 }
 
 .div-boton{
   display: flex;
   justify-content: space-between;
-  /* margin-bottom: 10px; */
   padding: 8px;
 }
 
-/*Paginador tabla*/
-.ant-pagination-item-active a {
-  color: #56b43c !important;
-}
 
-.ant-pagination-item-active a:hover {
-  color: #78c25f !important;
-}
-
-.ant-pagination.ant-pagination-mini .ant-pagination-item-active {
-  border-color: #78c25f !important;
-}
 
 /*Boton cerrar drawer agregar y editar*/
 .drawer-close-icon {
