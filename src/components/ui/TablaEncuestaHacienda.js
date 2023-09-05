@@ -51,6 +51,11 @@ function TablaEncuestaHacienda() {
         fechasMaxPorCliente();
     }, [dataHacienda]);
 
+    //Cambia formato de numeros con miles a puntos Ej: 1000 -> 1.000
+    const milesFormat = (number) => {
+        return Number(number)?.toLocaleString('de-DE');
+    }
+
     //Columnas Ant Design 
     const columns = [
         {
@@ -220,19 +225,20 @@ function TablaEncuestaHacienda() {
         if (accion === 'verDetalle') setOpen(true);
     }
 
+
     const dataHac = dataHacienda.map((Enc, index) => ({
         key: Enc.cabh_id,
         index: index,
         fecha: Enc.fecha,
         cliente: Enc.cli_nombre,
         idCliente: Enc.cli_id,
-        tambos: Enc.cant_tambosprod,
-        vacasordeñe: Enc.cant_tamboscab,
-        feedlot: Enc.cant_feedlot,
-        invernador: Enc.cant_invernador,
-        cria: Enc.cant_cria,
-        consestusd: Enc.cabh_consumoestimado,
-        litros: Enc.cabh_litros,
+        tambos: milesFormat(Enc.cant_tambosprod),
+        vacasordeñe: milesFormat(Enc.cant_tamboscab),
+        feedlot: milesFormat(Enc.cant_feedlot),
+        invernador: milesFormat(Enc.cant_invernador),
+        cria: milesFormat(Enc.cant_cria),
+        consestusd: milesFormat(Enc.cabh_consumoestimado),
+        litros: milesFormat(Enc.cabh_litros),
         isMasReciente: false,
         consrealusd: '',
     }));
@@ -289,8 +295,9 @@ function TablaEncuestaHacienda() {
         }
         const consrealusd = await fetchDataConsRealxCliente();
 
-        return consrealusd[0] ? consrealusd[0].costo_real : ''
+        return consrealusd[0] ? milesFormat(consrealusd[0].costo_real) : ''
     }
+
 
     return (
         <>
@@ -305,8 +312,7 @@ function TablaEncuestaHacienda() {
                 dataSource={tableData}
                 columns={columns}
                 pagination={{
-                    position: ["none", "bottomRight"],
-                    className: ['pagination-style'],
+                    position: ["none", "bottomRight"]
                 }}
             />
 
